@@ -1,0 +1,42 @@
+
+  <div class="container">
+        <h1>Ankur Qantas Pracrice</h1>
+        <form>
+              <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" required>
+                  </div>
+      
+    
+    
+         <div class="form-group">
+            <label for = "sliderTitle1">Slider 1</label>
+            <mat-slider
+            id = "sliderTitle1"
+            thumbLabel
+            [displayWith]="formatLabel"
+            tickInterval="1000"
+            min="1"
+            max="100000"></mat-slider>
+          </div>
+    
+          
+          <div class="form-group">
+              <label for = "sliderTitle1">Slider 2</label>
+              <mat-slider
+              id = "sliderTitle2"
+              thumbLabel
+              [displayWith]="formatLabel"
+              tickInterval="1000"
+              min="1"
+              max="100000"></mat-slider>
+            </div>
+    
+          <button type="submit" class="btn btn-success">Submit</button>
+    
+        </form>
+    </div>
