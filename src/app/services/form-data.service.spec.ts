@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { BoredApiService } from './bored-api.service';
+import { FormDataService } from './form-data.service';
 
-describe('BoredApiService', () => {
+describe('FormDataService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: BoredApiService = TestBed.get(BoredApiService);
+    const service: FormDataService = TestBed.get(FormDataService);
     expect(service).toBeTruthy();
   });
 });

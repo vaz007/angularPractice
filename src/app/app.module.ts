@@ -11,6 +11,23 @@ import { CardComponent } from './components/card/card.component';
 import {MatCardModule} from '@angular/material/card';
 
 import {FormComponent} from './components/form/form.component'
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import {ApiServiceService} from './services/api-service.service'
+
+import { HttpClientModule } from '@angular/common/http';
+
+import {MatSelectModule} from '@angular/material/select';
+
+
+import {RouterModule, Routes} from '@angular/router'
+
+
+const appRoutes : Routes = [
+  {path : 'results', component : CardComponent}
+]
+
 
 @NgModule({
   declarations: [
@@ -18,6 +35,7 @@ import {FormComponent} from './components/form/form.component'
     FormComponent,
     CardComponent
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,11 +43,28 @@ import {FormComponent} from './components/form/form.component'
     MatSliderModule,
     MatFormFieldModule,
     MatCardModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatSelectModule,
+    RouterModule.forRoot(
+      appRoutes
+    )
+    
+    
     
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    ApiServiceService
+  ],
+  bootstrap: [AppComponent, FormComponent]
 })
 export class AppModule { 
 
+  constructor(private apiService : ApiServiceService){}
+
+  getBoredApi(){
+    console.log(this.apiService.getBoredApi);
+    }
 }
