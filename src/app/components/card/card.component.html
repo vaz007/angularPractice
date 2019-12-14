@@ -1,13 +1,36 @@
+<!-- 
+<div >
 
-<div>
-
+    <h2>{{product.type}}</h2> -->
     <!-- Loop through items can do here or in TS file using ngFor -->
-<mat-card>
-    Should be 5 cards
+
+
+<mat-card *ngFor = "let product of products" >
+    Popover with custom class
+  
+    <mat-card-title>{{product.type}}</mat-card-title>
+    <mat-card-subtitle>{{product.activity}}</mat-card-subtitle>
+    <mat-card-content>
+            <h5><span>Type</span></h5> 
+            <p>{{product.type}}</p>
+            
+            <h5><span>Participants</span></h5> 
+            <p>{{product.participants}}</p>
+
+            <h5><span>Price</span></h5> 
+            <p>{{product.price}}</p>
+            
+            <h5><span>Link</span></h5> 
+            <p>{{product.link}}</p>
+
+            <h5><span>Key</span></h5> 
+            <p>{{product.key}}</p>
+
+
+    </mat-card-content>
+
+    <mat-card-footer>{{product.link}}</mat-card-footer>
 </mat-card>
 
-<button type="button" class="btn btn-md btn-primary" (click)="getBoredApi()">GET /products</button>
-
-
-
-</div>
+<!-- 
+</div> -->

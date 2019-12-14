@@ -5,37 +5,38 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { MatSliderModule } from '@angular/material/slider';
- import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardComponent } from './components/card/card.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 
-import {FormComponent} from './components/form/form.component'
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { FormComponent } from './components/form/form.component'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {ApiServiceService} from './services/api-service.service'
+import { ApiServiceService } from './services/api-service.service'
 
 import { HttpClientModule } from '@angular/common/http';
 
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 
 
-import {RouterModule, Routes} from '@angular/router'
+import { RouterModule, Routes } from '@angular/router'
 
 
-const appRoutes : Routes = [
-  {path : 'results', component : CardComponent}
+const appRoutes: Routes = [
+  { path: '', component: FormComponent },
+  { path: 'results', component: CardComponent }
 ]
 
 
 @NgModule({
   declarations: [
-    AppComponent, 
+    AppComponent,
     FormComponent,
     CardComponent
   ],
-  
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -51,20 +52,20 @@ const appRoutes : Routes = [
     RouterModule.forRoot(
       appRoutes
     )
-    
-    
-    
+
+
+
   ],
   providers: [
     ApiServiceService
   ],
-  bootstrap: [AppComponent, FormComponent]
+  bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
 
-  constructor(private apiService : ApiServiceService){}
+  constructor(private apiService: ApiServiceService) { }
 
-  getBoredApi(){
+  getBoredApi() {
     console.log(this.apiService.getBoredApi);
-    }
+  }
 }
