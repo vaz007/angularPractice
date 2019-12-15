@@ -1,9 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivityModel } from 'src/app/models/activityModel';
-import { FormDataService } from '../../services/form-data.service'
+import { FormBuilder, FormGroup } from '@angular/forms';
+import {ApiServiceService} from '../../services/api-service.service'
 
-import { ActivatedRoute, Router } from '@angular/router'
+import {  Router, ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-form',
@@ -18,9 +17,9 @@ export class FormComponent implements OnInit {
   subscriptionForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-    private formDataSerivce: FormDataService,
     private router: Router,
-    private formService : FormDataService,
+    private activatedRoute : ActivatedRoute,
+    private apiService : ApiServiceService
     ) {
     this.subscriptionForm = fb.group({
       activityName: 'education',
@@ -29,8 +28,6 @@ export class FormComponent implements OnInit {
 
     });
   }
-  message = 'Hola Mundo!';
-  
   ngOnInit() {
   
   }
@@ -40,7 +37,14 @@ export class FormComponent implements OnInit {
 
     console.log(this.subscriptionForm.value);
     this.exampleOtput.emit(this.subscriptionForm.value);
-    return ( this.formDataSerivce.myMethod(this.data), this.router.navigate(['/results']) ) ;
+    return ( this.apiService.myMethod(this.data), this.router.navigate(['/results'],{
+      relativeTo: this.activatedRoute,
+      queryParams: {
+        type : this.subscriptionForm.value.activityName,
+        minPrice : this.subscriptionForm.value.minPrice,
+        maxPrice : this.subscriptionForm.value.maxPrice
+      }
+    }) ) ;
   }
 
   

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {ActivityModel} from '../models/ActivityModel'
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +8,35 @@ import { Observable } from 'rxjs';
 
 
 export class ApiServiceService {
+
+  myMethod$ : Observable<any>;
+  private myMethodSubject = new Subject<any>()
+
    baseUrl = 'https://www.boredapi.com/api/activity';
-   private activites = [];
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.myMethod$ = this.myMethodSubject.asObservable() 
+  
+   }
+   myMethodData;
+   myMethod(data){
+    console.log("API SERVICE DATA",data);
+    this.myMethodSubject.next(data);
+    this.myMethodData = data
 
-  getBoredApi() : Observable<ActivityModel[]>{
-    return this.httpClient.get<ActivityModel[]>(`${this.baseUrl}`)
+    console.log("My method data ",`${this.baseUrl, this.myMethodData.activityName}`)
+    console.log(`${this.baseUrl}?${this.myMethodData.type}'?'${this.myMethodData.activityName} `)
+   }
+
+   getBoredApi() : Observable<any[]>{
+    return this.httpClient.get<any[]>(this.baseUrl,{
+      params : {
+        type : this.myMethodData.activityName,
+        minPrice : this.myMethodData.minPrice,
+        maxPrice : this.myMethodData.maxPrice
+      }
+    })
 
  }
+ 
 }

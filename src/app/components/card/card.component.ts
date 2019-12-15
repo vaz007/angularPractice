@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit} from '@angular/core';
 import {ApiServiceService} from '../../services/api-service.service'
-import {FormDataService} from '../../services/form-data.service'
 import {Router} from '@angular/router';
 
 @Component({
@@ -15,11 +14,10 @@ export class CardComponent implements OnInit {
   public data :Array<any>;
     
    constructor(private apiService : ApiServiceService,
-                private formService : FormDataService,
                 private router : Router
     ) {
 
-      this.formService.myMethod$.subscribe((data)=> {
+      this.apiService.myMethod$.subscribe((data)=> {
         console.log("Card Component ", data);
         this.data = data
       })   
@@ -48,10 +46,7 @@ export class CardComponent implements OnInit {
       
 
      }
-    //  message:string;
-    //  ngAfterViewInit() {
-    //   this.message = this.child.message
-    //     }
+    
 
     
 

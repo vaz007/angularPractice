@@ -1,13 +1,25 @@
-.mat-card{
-    display:flex;
-    flex-direction: column;
+.flex-container{
+  flex-direction: column;
+  -webkit-align-items: center; /* Safari 7.0+ */
+  display: flex;
+  align-items: center;
+}
+.card{
+    justify-content: center;    
+    
+    width: 450px;
+    height: 290px;
+    -webkit-align-items: center; /* Safari 7.0+ */
+    display: flex;
+    align-items: center;
+    
   }
   
-  .mat-card-header {
+  .card-content {
     flex-shrink: 0;
   }
   
-  .mat-card-content{
+  .p{
     flex-grow: 1;
     overflow: auto;
   }

@@ -1,69 +1,51 @@
-<div class="container" [formGroup]="subscriptionForm">
-  <h1>Ankur Qantas Pracrice</h1>
-  
+<div class="container">
   <form [formGroup]="subscriptionForm">
-      <div class="row">
-          <div class="col-md-6">
+    <div class="col">
+      <div class="col-md-4 col-lg-5">
 
-              <mat-form-field>
-                  <mat-label>Select an option</mat-label>
-                  <mat-select [(value)]="selected" formControlName="activityName" required>
-                    <mat-option value="education">education</mat-option>
-                    <mat-option value="recreational">recreational</mat-option>
-                    <mat-option value="social">social</mat-option>
-                    <mat-option value="diy">diy</mat-option>
-                    <mat-option value="charity">charity</mat-option>
-                    <mat-option value="cooking">cooking</mat-option>
-                    <mat-option value="relaxation">relaxation</mat-option>
-                    <mat-option value="music">music</mat-option>
-                    <mat-option value="busywork">busywork</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                
-                <p>You selected: {{selected}}</p>
-          </div>
+        <mat-form-field>
+          <h4>Select an option</h4>
+          <mat-select [(value)]="selected" formControlName="activityName" required>
+            <mat-option value="education">education</mat-option>
+            <mat-option value="recreational">recreational</mat-option>
+            <mat-option value="social">social</mat-option>
+            <mat-option value="diy">diy</mat-option>
+            <mat-option value="charity">charity</mat-option>
+            <mat-option value="cooking">cooking</mat-option>
+            <mat-option value="relaxation">relaxation</mat-option>
+            <mat-option value="music">music</mat-option>
+            <mat-option value="busywork">busywork</mat-option>
+          </mat-select>
+        </mat-form-field>
 
-          <div class="col-md-6">
-              <div class="md-form">
-              
-                  <label for="sliderTitle1">Minimum Price</label>
-                  <mat-slider
-                    id="sliderTitle1"
-                    thumbLabel
-                    tickInterval="1000"
-                    min="0"
-                    max="1"
-                    step = 0.01
-                    formControlName="maxPrice"
+        <p>You selected: {{selected}}</p>
+      </div>
 
-                  ></mat-slider>
-              
-            </div>
-              <br>
-              <div class="md-form">
+      <div class="col-md-4 col-lg-4">
+        <div class="md-form">
 
-              <label for="sliderTitle1">Maximum Price</label>
-              <mat-slider
-                id="sliderTitle1"
-                thumbLabel
-                tickInterval="1000"
-                min="0"
-                max="1"
-                step = 0.01
-                formControlName="minPrice"
+          <h4 for="sliderTitle1">Minimum Price</h4>
+          <mat-slider id="sliderTitle1" thumbLabel tickInterval="1000" min="0" max="1" step=0.01
+            formControlName="minPrice"></mat-slider>
 
-              ></mat-slider>
-          
-  
-              <button class="btn btn-success" type="button" (click)="OnSubmit()"><a routerLink ="/results"></a>Send</button>
-              
-            </div>
-          
-          </div>
-        
         </div>
- 
+        <br>
+        <div class="md-form">
+
+          <h4 for="sliderTitle1">Maximum Price</h4>
+          <mat-slider id="sliderTitle1" thumbLabel tickInterval="1000" min="0" max="1" step=0.01
+            formControlName="maxPrice"></mat-slider>
+
+          <div class="col-md-4 col-lg-4">
+
+            <button class="btn btn-success" type="button" (click)="OnSubmit()"><a
+                routerLink="/results"></a>Send</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
   </form>
-
-
-  </div>
+</div>
