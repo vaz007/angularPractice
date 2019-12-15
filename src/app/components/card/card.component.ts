@@ -11,25 +11,19 @@ import {Router} from '@angular/router';
 
 export class CardComponent implements OnInit {
 
- //  @Input() activity : ActivityModel;
-  //  @Input() subscriptionForm  : FormComponent;
 
-   // @ViewChild(FormComponent, ) child;
-
-   item : any[]
-   myActivity: any;
-
+  public data :Array<any>;
+    
    constructor(private apiService : ApiServiceService,
                 private formService : FormDataService,
                 private router : Router
     ) {
 
-      
-      this.formService.dataToString.subscribe(
-        data => {
-          console.log("Reciving data fro form Service", data);
-        }
-      )
+      this.formService.myMethod$.subscribe((data)=> {
+        console.log("Card Component ", data);
+        this.data = data
+      })   
+       
     
 
      }
@@ -39,11 +33,6 @@ export class CardComponent implements OnInit {
    
   ngOnInit() {
 
- //   console.log(this.formService.register);
-      // this.route.paramMap.subscribe(params => {
-      //   console.log(params)
-      // })
-     //  console.log("SUB", this.subscriptionForm);
 
         for (let i=0; i <=5; i++){
           this.apiService.getBoredApi().subscribe(activity => {

@@ -34,20 +34,16 @@ export class FormComponent implements OnInit {
   ngOnInit() {
   
   }
-
+  data : Array<any>;
   OnSubmit() {
+    this.data = this.subscriptionForm.value;
 
     console.log(this.subscriptionForm.value);
-  //  this.router.navigate(['/results'])
     this.exampleOtput.emit(this.subscriptionForm.value);
-    return this.onRecievingResults(this.subscriptionForm.value)
+    return ( this.formDataSerivce.myMethod(this.data), this.router.navigate(['/results']) ) ;
   }
 
   
-  onRecievingResults(value){
-    console.log(value);
-    this.formService.saveData(value)
-    this.router.navigate(['/results'])
-  }
+  
    
 }

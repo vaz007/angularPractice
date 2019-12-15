@@ -1,6 +1,6 @@
 import { Injectable,  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subject } from 'rxjs';
 
 import {ActivityModel} from '../models/ActivityModel'
 
@@ -10,7 +10,12 @@ import {ActivityModel} from '../models/ActivityModel'
 export class FormDataService {
 
   
-  constructor(private httpClient : HttpClient) { }
+   myMethod$ : Observable<any>;
+  private myMethodSubject = new Subject<any>()
+
+  constructor(private httpClient : HttpClient) {
+    this.myMethod$ = this.myMethodSubject.asObservable() 
+   }
 
   //  url = 'http://localhost:4200/results'
 
@@ -19,23 +24,12 @@ export class FormDataService {
   //   return this.httpClient.post<ActivityModel[]>(this.url, userData);
   // }
 
-  sharingData = {
-    activity: '',
-    accessibility: '',
-    type: '',
-    participants: '',
-    price: '',
-    link: '',
-    key: '',
-  }
+  
+   myMethod(data){
+    console.log(data);
+    this.myMethodSubject.next(data);
+    
+   }
 
-// Observable string source
-  private dataStringSource = new BehaviorSubject<string>('');
-  dataToString = this.dataStringSource.asObservable();
-  public saveData(value){
-    console.log("save data function called ", this.sharingData.activity);
-    this.sharingData.activity = value;
-    this.dataStringSource.next(this.sharingData.type);
-  }
-
+  
 }
